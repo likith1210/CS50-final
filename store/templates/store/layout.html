@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Med_Store{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'store/my.css' %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">    
+    </head>
+    <body>
+        <ul class="nav menu-bar">
+            <li class="nav-item menu-name">
+                <h1>Med-Store</h1>
+            </li>
+            
+            <li class="nav-item menu-item">
+                <a class="nav-link" href="{% url 'store:billing' %}">BILLING</a>
+            </li>
+            <li class="nav-item menu-item">
+                <a class="nav-link" href="{% url 'store:bills' %}">BILLS</a>
+            </li>
+            <li class="nav-item menu-item">
+                <a class="nav-link" href="{% url 'store:view' %}">VIEW MED</a>
+            </li>
+            <li class="nav-item menu-item">
+                <a class="nav-link" href="{% url 'store:add' %}">ADD MED</a>
+            </li>
+            
+        </ul>
+        {% block body %}
+        {% endblock %}
+        <script src="{% static 'store/myscript.js' %}"></script>
+    </body>
+</html>

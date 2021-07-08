@@ -1,0 +1,51 @@
+{% extends "store/layout.html" %}
+
+{% block body %}
+{% for bill in bills%}
+    <div class="bills_main">
+        <div class="bills_head row col-lg-12">
+            <div class="col-lg 3">
+                <h5>Name: {{bill.pid.name}}</h5>
+                <h5>Age: {{bill.pid.age}}</h5>
+                <h5>Sex: {{bill.pid.sex}}</h5>
+                <h5>Address: {{bill.pid.address}}</h5>
+            </div>
+            <div class="col-lg-6"></div>
+            <div class="col-lg-3">
+                <h5>Bill id : {{ bill.billid}}</h5>
+                <h5>Date : {{ bill.time.date}}</h5>
+                <h5>Time : {{ bill.time.time}}</h5>
+            </div>
+        </div>
+        <div class="col-lg-12 row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <table class="table">
+                    <thead class="thead-primary">
+                        <tr>
+                            <th class="col-lg-4">Medicine</th>
+                            <th class="col-lg-2" style="text-align: center;">Quantity</th>
+                            <th class="col-lg-2" style="text-align: center;">cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for med in bill.bill.all %}
+                            <tr>
+                                <td>{{med.mid.name }} - {{ med.mid.dosage}}</td>
+                                <td style="text-align: center;">{{med.qty}}</td>
+                                <td style="text-align: center;">{{med.cost}}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td style="text-align: center;"><h5>Total : </h5></td>
+                            <td style="text-align: center;"><h5>{{bill.total}}</h5></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

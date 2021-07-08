@@ -1,0 +1,22 @@
+{% extends "store/layout.html" %}
+
+{% block body %}
+<div class="med_form">
+    <p class="sign" align="center">Add Meds</p>
+    <form name="med" action="{% url 'store:add' %}" method="POST">
+    {% csrf_token %}
+        <input type="text" placeholder="Name" name="name" class="form_text">
+        <input type="text" placeholder="Dosage" name="dosage" class="form_text">
+        <select name="manu" class="form_text">
+            <option value="">Manufacturer</option>
+            {% for manu in manufactures %}
+                <option value="{{manu.name}}">{{ manu.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="composition" placeholder="Composition" class="form_text">
+        <input type="text" name="stock" placeholder="Stock" class="form_text">
+        <input type="date" name="expiry" placeholder="Expiry" class="form_text bottom_margin">
+        <input type="submit" value="ADD" class="btn submit" align="center">
+    </form>
+</div>
+{% endblock %}

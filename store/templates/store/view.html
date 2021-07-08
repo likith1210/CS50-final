@@ -1,0 +1,43 @@
+{% extends "store/layout.html" %}
+
+{% block body %}
+<div class="row bottom_margin">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <h2 class="text-center mb-4 heading">Medicines</h2>
+        <div class="table-wrap">
+            <table class="table">
+                <thead class="thead mythead">
+                    <tr>
+                        <th>Name</th>
+                        <th>Dosage</th>
+                        <th>composition</th>
+                        <th>Stock</th>
+                        <th>Expiry</th>
+                        <th>Manufacturer</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for med in meds%}
+                        <tr class="border">
+                            <th scope="row" class="scope">{{ med.name }}</th>
+                            <td class="odd">{{ med.composition }}</td>
+                            <td>{{ med.dosage}}</td>
+                            {% if med.stock < 30 %}
+                                <td class="odd low">{{ med.stock }}</td>
+                            {% else %}
+                                <td class="odd">{{ med.stock }}</td>
+                            {% endif %}
+                            <td>{{ med.expiry }}</td>
+                            <td class="odd">{{ med.manu }}</td>
+                            <td>{{ med.price }}</td>
+                        </tr>
+                    {% endfor %}    
+                </tbody>
+            </table>
+        </div>
+    </div>        
+    <div class="col-lg-1"></div>
+</div>
+{% endblock %}

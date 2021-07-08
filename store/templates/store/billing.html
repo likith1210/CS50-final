@@ -1,0 +1,30 @@
+{% extends "store/layout.html" %}
+
+{% block body %}
+<div class="bill_form">
+    <p class="sign" align="center">BILLING</p>
+    <form name="med" action="{% url 'store:billing' %}" method="POST">
+    {% csrf_token %}
+        <input type="text" placeholder="Name" name="name" class="bill_text">
+        <input type="text" placeholder="Age" name="age" class="bill_text">
+        <div class="row bill_radio">
+            <h5 class="margin_right margin_top">Gender: </h5>
+                Male<input type="radio" name="gender" value="male" class="margin_right">
+                Female<input type="radio" name="gender" value="female" class="margin_top">
+        </div>
+        <input type="text" name="phone" placeholder="Phone no." class="bill_text">
+        <input type="text" name="address" placeholder="Address" class="bill_text bottom_margin">
+        <p class="inner_sign">Add meds</p>
+        <div id="dynamic"></div>
+        <select name="add-med" id="med" class="inner_text">
+            <option value="">Medicine</option>
+            {% for med in meds %}
+                <option value="{{med.name}}">{{med.name}}</option>
+            {% endfor %}
+        </select>
+        <input type="text" placeholder="Quantity" id="qty" name="qty" class="inner_text">
+        <button class="btn bill_btn" onclick="return false" id="add">Add</button>
+        <input type="submit" value="BILL" class="btn bill_submit" align="center">
+    </form>
+</div>
+{% endblock %}
